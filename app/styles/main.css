@@ -9,6 +9,24 @@ body {
   padding: 0;
 }
 
+
+table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 15px;
+        }
+
+.selected {
+        background-color:#F3F315;
+        color:black;
+        }
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -19,7 +37,6 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
 }
 /* Make the masthead heading the same height as the navigation */
@@ -43,12 +60,9 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
+  padding: 5px;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  background-color: transparent;
 }
 
 /* Supporting marketing content */

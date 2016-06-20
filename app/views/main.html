@@ -1,23 +1,48 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div ng-controller="SiteCtrl as locs">
+<div ng-controller="MapCtrl as map" class="jumbotron">
+    <div style="height:300px;">
+              <leaflet center="map.center" geojson="locs.geojson" events="map.events" width="100%" height="100%"></leaflet>
+          </div>
 </div>
 
 <div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+<div>
+    <form role="form">
+          Search: <input ng-model="search.name">
+          <select class="selectpicker" ng-model='search.variable' ng-options="">
+              <option value="" selected="selected">-- All Variables --</option>
+          </select>
+      </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  </form>
+</div>
+
+<div ng-controller="TableCtrl as table">
+    <div>
+        selectedRow = {{table.selectedRow}}
+        feature = {{table.selectedFeature}}
+    </div>
+  <div class='row'>
+      <div class='col-md-8 col-md-offset-2'>
+          <table border="1" style="width:100%">
+              <tr>
+                  <th>Name</th>
+                  <th>Variable</th>
+                  <th>Location</th>
+              </tr>
+              <tr ng-repeat="site in locs.sites | filter:search.name" ng-class="{'selected':$index == table.selectedRow}" ng-click="table.setClickedRow($index)">
+                  <td>{{site.properties.name}}</td>
+                  <td>{{site.properties.var}}</td>
+                  <td>{{site.geometry.coordinates}}</td>
+              </tr>
+          </table>
+      </div>
+
+
+
+
+  </div>
+
+</div>
 </div>
