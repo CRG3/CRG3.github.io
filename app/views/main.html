@@ -1,40 +1,34 @@
-<div ng-controller="SiteCtrl as locs">
-<div ng-controller="MapCtrl as map" class="jumbotron">
-    <div style="height:300px;">
-              <leaflet center="map.center" geojson="locs.geojson" events="map.events" width="100%" height="100%"></leaflet>
-          </div>
+<div ng-controller="SiteCtrl as sites">
+    <div class="row">
+        <div class="col-md-1">
+            Search: <input ng-model="query" type="text" />
+        </div>
+        <div ng-controller="MapCtrl as map" class="col-md-8 col-md-offset-3">
+            <div style="height:300px;">
+                      <leaflet center="map.center" geojson="sites.geojson" events="map.events" width="100%" height="100%"></leaflet>
+                  </div>
+        </div>
+
 </div>
 
-<div class="row marketing">
 
-<div>
-    <form role="form">
-          Search: <input ng-model="search.name">
-          <select class="selectpicker" ng-model='search.variable' ng-options="">
-              <option value="" selected="selected">-- All Variables --</option>
-          </select>
-      </div>
-
-  </form>
-</div>
 
 <div ng-controller="TableCtrl as table">
     <div>
         selectedRow = {{table.selectedRow}}
-        feature = {{table.selectedFeature}}
     </div>
   <div class='row'>
       <div class='col-md-8 col-md-offset-2'>
           <table border="1" style="width:100%">
               <tr>
-                  <th>Name</th>
-                  <th>Variable</th>
-                  <th>Location</th>
+                  <th><a href="" ng-click="orderByField = 'name'; reverse=!reverse">Name</a></th>
+                  <th><a href="" ng-click="orderByField = 'snippet'; reverse=!reverse">Variable</a></th>
+                  <th><a href="" ng-click="orderByField = 'year'; reverse=!reverse">Year</a></th>
               </tr>
-              <tr ng-repeat="site in locs.sites | filter:search.name" ng-class="{'selected':$index == table.selectedRow}" ng-click="table.setClickedRow($index)">
-                  <td>{{site.properties.name}}</td>
-                  <td>{{site.properties.var}}</td>
-                  <td>{{site.geometry.coordinates}}</td>
+              <tr ng-repeat="feature in sites.projects | orderBy:orderByField:reverse | filter:query" ng-class="{'selected':$index == table.selectedRow}" ng-click="table.setClickedRow($index)">
+                  <td>{{feature.name}}</td>
+                  <td>{{feature.snippet}}</td>
+                  <td>{{feature.year}}</td>
               </tr>
           </table>
       </div>

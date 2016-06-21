@@ -34,8 +34,6 @@ app.controller('TableCtrl', function() {
 });
 
 app.controller('MapCtrl', function() {
-  this.test = 'I m a test controller';
-  this.again = 'redo';
   this.center = {
     lat: 38.21,
     lng: -121.309,
@@ -47,22 +45,35 @@ app.controller('MapCtrl', function() {
   this.events = null;
 });
 
-app.controller('SiteCtrl', function($scope, $http) {
+app.controller('SiteCtrl', function($http) {
     var self = this;
-    $http.get('map.geojson').then(function(response) {
-    var features = [];
-    for (var i = 0; i < response.data.features.length; i++) {
-      var feat = response.data.features[i];
-      features.push(feat);
-    }
-    self.sites = features;
-    self.geojson = {
-      data: response.data
-    };
-  });
 
-  $scope.search = {
-      name: '',
-      variable: '',
-  };
+    $http.get('map_multi.geojson').then(function(data) {
+        self.geojson = data;
+        self.features = self.geojson.data.features;
+        });
+
+
+    this.projects = [
+        {
+          name: 'DEM',
+          snippet: 'Example',
+          page: '/dem',
+          year: '2015'
+        }, {
+          name: 'Water Quality',
+          snippet: 'For monitoring...ex',
+          page:'/wq',
+          year: '2001'
+        }, {
+          name: 'Groundwater',
+          snippet: 'Groundwater wells',
+          page: '/new',
+          year: '2014'
+        }
+      ];
+});
+
+app.controller('PickerCtrl', function() {
+    this.geojson = 'this';
 });
