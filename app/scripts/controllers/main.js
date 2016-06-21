@@ -59,21 +59,67 @@ app.controller('SiteCtrl', function($http) {
           name: 'DEM',
           snippet: 'Example',
           page: '/dem',
-          year: '2015'
+          year: '2015',
+          variable: 'topography'
         }, {
           name: 'Water Quality',
           snippet: 'For monitoring...ex',
           page:'/wq',
-          year: '2001'
+          year: '2001',
+          variable: 'water'
         }, {
           name: 'Groundwater',
           snippet: 'Groundwater wells',
           page: '/new',
-          year: '2014'
-        }
+          year: '2014',
+          variable: 'soil'
+      },
+      {
+        name: 'Stormwater sampling',
+        snippet: 'For monitoring...storms',
+        page:'/wq',
+        year: '2016',
+        variable: 'water'
+      },
       ];
 });
 
 app.controller('PickerCtrl', function() {
     this.geojson = 'this';
 });
+
+app.filter('unique', ['$parse', function ($parse) {
+
+  return function (items, filterOn) {
+
+    if (filterOn === false) {
+      return items;
+    }
+
+    if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
+      var newItems = [],
+        get = angular.isString(filterOn) ? $parse(filterOn) : function (item) { return item; };
+
+      var extractValueToCompare = function (item) {
+        return angular.isObject(item) ? get(item) : item;
+      };
+
+      angular.forEach(items, function (item) {
+        var isDuplicate = false;
+
+        for (var i = 0; i < newItems.length; i++) {
+          if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
+            isDuplicate = true;
+            break;
+          }
+        }
+        if (!isDuplicate) {
+          newItems.push(item);
+        }
+
+      });
+      items = newItems;
+    }
+    return items;
+  };
+}]);
