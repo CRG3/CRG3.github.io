@@ -17,12 +17,6 @@ app.controller('MainCtrl', function() {
   ];
 });
 
-
-app.controller('ProjectCtrl', function() {
-  this.sites = [];
-});
-
-
 app.controller('TableCtrl', function() {
   // use this controller to automatically build the table == TODO
   this.selectedRow = null;
@@ -84,9 +78,15 @@ app.controller('SiteCtrl', function($http) {
       ];
 });
 
-app.controller('PickerCtrl', function() {
-    this.geojson = 'this';
+app.controller('PickerCtrl', function($scope) {
+
+    $scope.clearSelections = function(){
+        $scope.search.query = '';
+        $scope.search.variable = '';
+    };
 });
+
+
 
 app.filter('unique', ['$parse', function ($parse) {
 

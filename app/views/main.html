@@ -4,16 +4,16 @@
 
       <ul class="nav nav-stacked">
         <li>
-          <input ng-model="query" type="text" placeholder="Search"/>
+          <input ng-model="search.query" placeholder="Search"/>
         </li>
         <li>
-            <p>Filter by Group</p>
+            <p>Filter by project type</p>
             <select class="selectpicker" ng-model='search.variable' ng-options=" feature.variable as feature.variable for feature in sites.projects | unique:'variable' | orderBy:'variable'" fix>
-              <option value="" selected="selected">-- All Groups --</option>
+              <option value="" selected="selected">-- All types --</option>
             </select>
           <li>
             <li>
-              <div class="form-group">
+              <div ng-controller="PickerCtrl as pick" class="form-group">
                 <button type="button" class="btn btn-grey" ng-click='clearSelections()'>Clear Selections</button>
               </div>
             </li>
@@ -32,10 +32,10 @@
           <table border="1" style="width:100%">
             <tr>
               <th><a href="" ng-click="orderByField = 'name'; reverse=!reverse">Name</a></th>
-              <th><a href="" ng-click="orderByField = 'variable'; reverse=!reverse">Variable</a></th>
+              <th><a href="" ng-click="orderByField = 'variable'; reverse=!reverse">Project Type</a></th>
               <th><a href="" ng-click="orderByField = 'year'; reverse=!reverse">Year</a></th>
             </tr>
-            <tr ng-repeat="feature in sites.projects | orderBy:orderByField:reverse | filter:query" ng-class="{'selected':$index == table.selectedRow}" ng-click="table.setClickedRow($index)">
+            <tr ng-repeat="feature in sites.projects | orderBy:orderByField:reverse | filter:search.variable " ng-class="{'selected':$index == table.selectedRow}" ng-click="table.setClickedRow($index)">
               <td>{{feature.name}}</td>
               <td>{{feature.variable}}</td>
               <td>{{feature.year}}</td>
