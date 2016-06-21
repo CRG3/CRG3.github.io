@@ -84,6 +84,7 @@ app.controller('PickerCtrl', function($scope) {
         $scope.search.query = '';
         $scope.search.variable = '';
     };
+
 });
 
 
