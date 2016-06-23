@@ -76,17 +76,13 @@ app.controller('SiteCtrl', function($http) {
         variable: 'water'
       },
       ];
+
+     this.clearSelections = function(){
+         this.query = '';
+         this.variable = '';
+         this.year = '';
+      };
 });
-
-app.controller('PickerCtrl', function($scope) {
-
-    $scope.clearSelections = function(){
-        $scope.search.query = '';
-        $scope.search.variable = '';
-    };
-
-});
-
 
 
 app.filter('unique', ['$parse', function ($parse) {
@@ -123,4 +119,46 @@ app.filter('unique', ['$parse', function ($parse) {
     }
     return items;
   };
+}]);
+
+
+//filter name customSearch
+app.filter('customSearch',[function(){
+    /** @data is the original data**/
+    /** @variable is the search query for variable**/
+    /** @year is the search query for year**/
+    return function(data,variable,year){
+        var output = []; // store result in this
+        /**@case1 if both searches are present**/
+        if(!!variable && !!year){
+            variable = variable.toLowerCase();
+            year = year.toLowerCase();
+            //loop over the original array
+            for(var i = 0;i<data.length; i++){
+                // check if any result matching the search request
+                if(data[i].variable.toLowerCase().indexOf(variable) !== -1 && data[i].year.toLowerCase().indexOf(year) !== -1){
+                    //push data into results array
+                    output.push(data[i]);
+                }
+            }
+        } else if(!!variable){ /**@case2 if only variable query is present**/
+            variable = variable.toLowerCase();
+            for(var j = 0;j<data.length; j++){
+                if(data[j].variable.toLowerCase().indexOf(variable) !== -1){
+                    output.push(data[j]);
+                }
+            }
+        } else if(!!year){ /**@case3 if only year query is present**/
+            year = year.toLowerCase();
+            for(var k = 0;k<data.length; k++){
+                if(data[k].year.toLowerCase().indexOf(year) !== -1){
+                    output.push(data[k]);
+                }
+            }
+        } else {
+            /**@case4 no query is present**/
+            output = data;
+        }
+        return output; // finally return the result
+    };
 }]);
