@@ -30,7 +30,7 @@ app.controller('MapCtrl', function() {
   this.events = null;
 });
 
-app.controller('SiteCtrl', function($http) {
+app.controller('SiteCtrl', function($http, $scope) {
     var self = this;
 
     $http.get('geo.geojson').then(function(data) {
@@ -44,11 +44,13 @@ app.controller('SiteCtrl', function($http) {
             });
 
      this.clearSelections = function(){
-         this.query = '';
-         this.variable = '';
-         this.year = '';
+         $scope.search.query = '';
+         $scope.search.variable = '';
+         $scope.search.year = '';
          this.selectedRow = null;
       };
+
+
 
       this.tableClick = function(dat){
           this.query = dat.name;
@@ -59,6 +61,18 @@ app.controller('SiteCtrl', function($http) {
       this.setClickedRow = function(index) {
         this.selectedRow = index;
       };
+
+      $scope.search = {
+          query: '',
+          variable: '',
+          year: ''
+      };
+
+      // watch the search collection
+      $scope.$watchCollection('search', function(newValue, oldvalue){
+          console.log(newValue, oldvalue);
+      });
+
 });
 
 

@@ -4,6 +4,7 @@
     {
       "type": "Feature",
       "properties": {
+        "FID": 1,
         "marker-color": "#3648c7",
         "marker-size": "medium",
         "marker-symbol": "circle",
@@ -24,6 +25,7 @@
   {
     "type": "Feature",
     "properties": {
+      "FID": 2,
       "name": "Flood Water Quality Monitoring",
       "years": [2015, 2016],
       "variable": "Water Quality",
@@ -38,6 +40,7 @@
 {
      "type": "Feature",
      "properties": {
+         "FID": 3,
          "name": "Floodplain Topography",
          "years": [2014, 2015],
          "variable": "DEM",

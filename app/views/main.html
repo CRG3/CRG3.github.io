@@ -4,24 +4,25 @@
 
       <ul class="nav nav-stacked">
         <li>
-          <input ng-model="ctrl.query" placeholder="Search"/>
+          <input ng-model="search.query" placeholder="Search"/>
         </li>
         <li>
             <p>Filter by project type</p>
-            <select class="selectpicker" ng-model='ctrl.variable' ng-options=" feature.variable as feature.variable for feature in ctrl.projects | unique:'variable' | orderBy:'variable'" fix>
+            <select class="selectpicker" ng-model='search.variable' ng-options=" feature.variable as feature.variable for feature in ctrl.projects | unique:'variable' | orderBy:'variable'" fix>
               <option value="" selected="selected">All types</option>
             </select>
         </li>
         <li>
             <p>Filter by year</p>
-            <select class="selectpicker" ng-model='ctrl.year' ng-options=" feature.year as feature.year for feature in ctrl.projects | unique:'year' | orderBy:'year'" fix>
+            <select class="selectpicker" ng-model='search.year' ng-options=" feature.year as feature.year for feature in ctrl.projects | unique:'year' | orderBy:'year'" fix>
               <option value="" selected="selected">All years</option>
             </select>
         </li>
             <li>
               <div  class="form-group">
-                <button type="button" class="btn btn-grey" ng-click='ctrl.clearSelections()'>Clear Selections</button>
+                <button type="button" class="btn btn-grey" ng-click='ctrl.clearSelections()'><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  Clear Selections</button>
               </div>
+
             </li>
       </ul>
     </div>
@@ -34,19 +35,24 @@
 
     <div style="padding: 20px"></div>
 
+
     <div>
           <table border="1" style="width:100%">
             <tr>
               <th><a href="" ng-click="orderByField = 'name'; reverse=!reverse">Name</a></th>
               <th><a href="" ng-click="orderByField = 'variable'; reverse=!reverse">Project Type</a></th>
               <th><a href="" ng-click="orderByField = 'years'; reverse=!reverse">Year</a></th>
-              <th><a href="" ng-click="orderByField = 'details'; reverse=!reverse">Details</a></th>
+              <th><a href="">More information</a></th>
             </tr>
-            <tr ng-repeat="project in ctrl.projects | orderBy:orderByField:reverse | customSearch:ctrl.variable:ctrl.year | filter:ctrl.query" ng-class="{'selected':project == ctrl.selectedRow}" ng-click="ctrl.setClickedRow(project)">
+            <tr ng-repeat="project in ctrl.projects | orderBy:orderByField:reverse | customSearch:search.variable:search.year | filter:search.query" ng-class="{'selected':project == ctrl.selectedRow}" ng-click="ctrl.setClickedRow(project)">
               <td>{{project.name}}</td>
               <td>{{project.variable}}</td>
               <td>{{project.years}}</td>
-              <td>{{project.details}}</td>
+              <td>
+                  <button type="button" class="btn btn-default btn-lg">
+<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> details
+</button>
+              </td>
             </tr>
           </table>
         </div>
