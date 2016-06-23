@@ -34,8 +34,7 @@
 
     <div style="padding: 20px"></div>
 
-
-    <div ng-controller="TableCtrl as table">
+    <div>
           <table border="1" style="width:100%">
             <tr>
               <th><a href="" ng-click="orderByField = 'name'; reverse=!reverse">Name</a></th>
@@ -43,7 +42,7 @@
               <th><a href="" ng-click="orderByField = 'years'; reverse=!reverse">Year</a></th>
               <th><a href="" ng-click="orderByField = 'details'; reverse=!reverse">Details</a></th>
             </tr>
-            <tr ng-repeat="project in ctrl.projects | orderBy:orderByField:reverse | customSearch:ctrl.variable:ctrl.year | filter:ctrl.query" ng-class="{'selected':$index == table.selectedRow}" ng-click="table.setClickedRow($index)">
+            <tr ng-repeat="project in ctrl.projects | orderBy:orderByField:reverse | customSearch:ctrl.variable:ctrl.year | filter:ctrl.query" ng-class="{'selected':project == ctrl.selectedRow}" ng-click="ctrl.setClickedRow(project)">
               <td>{{project.name}}</td>
               <td>{{project.variable}}</td>
               <td>{{project.years}}</td>

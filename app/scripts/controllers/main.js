@@ -17,15 +17,6 @@ app.controller('MainCtrl', function() {
   ];
 });
 
-app.controller('TableCtrl', function() {
-  // use this controller to automatically build the table == TODO
-  this.selectedRow = null;
-  this.selectedFeature = null;
-  this.setClickedRow = function(index, name) {
-    this.selectedRow = index;
-    this.selectedFeature = name;
-  };
-});
 
 app.controller('MapCtrl', function() {
   this.center = {
@@ -56,6 +47,17 @@ app.controller('SiteCtrl', function($http) {
          this.query = '';
          this.variable = '';
          this.year = '';
+         this.selectedRow = null;
+      };
+
+      this.tableClick = function(dat){
+          this.query = dat.name;
+      };
+
+      // highlight selected row in tabble
+      this.selectedRow = null;
+      this.setClickedRow = function(index) {
+        this.selectedRow = index;
       };
 });
 
