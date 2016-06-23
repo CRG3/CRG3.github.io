@@ -42,40 +42,15 @@ app.controller('MapCtrl', function() {
 app.controller('SiteCtrl', function($http) {
     var self = this;
 
-    $http.get('map_multi.geojson').then(function(data) {
+    $http.get('geo.geojson').then(function(data) {
         self.geojson = data;
         self.features = self.geojson.data.features;
         });
 
 
-    this.projects = [
-        {
-          name: 'DEM',
-          snippet: 'Example',
-          page: '/dem',
-          year: '2015',
-          variable: 'topography'
-        }, {
-          name: 'Water Quality',
-          snippet: 'For monitoring...ex',
-          page:'/wq',
-          year: '2001',
-          variable: 'water'
-        }, {
-          name: 'Groundwater',
-          snippet: 'Groundwater wells',
-          page: '/new',
-          year: '2014',
-          variable: 'soil'
-      },
-      {
-        name: 'Stormwater sampling',
-        snippet: 'For monitoring...storms',
-        page:'/wq',
-        year: '2016',
-        variable: 'water'
-      },
-      ];
+    $http.get('projects.json').then(function(data2) {
+            self.projects = data2.data;
+            });
 
      this.clearSelections = function(){
          this.query = '';
