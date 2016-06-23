@@ -20,8 +20,8 @@ app.controller('MainCtrl', function() {
 
 app.controller('MapCtrl', function() {
   this.center = {
-    lat: 38.21,
-    lng: -121.309,
+    lat: 38.276456,
+    lng: -121.392615,
     zoom: 12
   };
   this.defaults = {
@@ -30,17 +30,16 @@ app.controller('MapCtrl', function() {
   this.events = null;
 });
 
-app.controller('SiteCtrl', function($http, $scope) {
+app.controller('SiteCtrl', function($http, $scope, $filter) {
     var self = this;
-
     $http.get('geo.geojson').then(function(data) {
         self.geojson = data;
-        self.features = self.geojson.data.features;
+        $scope.geojson = data;
         });
 
 
     $http.get('projects.json').then(function(data2) {
-            self.projects = data2.data;
+            $scope.projects = data2.data;
             });
 
      this.clearSelections = function(){
@@ -48,6 +47,7 @@ app.controller('SiteCtrl', function($http, $scope) {
          $scope.search.variable = '';
          $scope.search.year = '';
          this.selectedRow = null;
+         $scope.geojson = this.geojson;
       };
 
 
@@ -69,8 +69,50 @@ app.controller('SiteCtrl', function($http, $scope) {
       };
 
       // watch the search collection
-      $scope.$watchCollection('search', function(newValue, oldvalue){
-          console.log(newValue, oldvalue);
+      $scope.$watchCollection('search', function(newValue, oldValue){
+          console.log(newValue, oldValue);
+          if(newValue === oldValue){
+              return;
+          }
+
+          // get a copy of the sites json info
+          var x = angular.copy($scope.projects);
+
+          // filter using the search query
+          var filtered = $filter('filter')(x, $scope.search.query);
+
+          // filter using the drop downs
+          var filtered2 = $filter('customSearch')(filtered, $scope.search.variable, $scope.search.year);
+
+          // get list of FID's from the site json
+          var FIDs = [];
+          for(var i=0; i< filtered2.length; i++){
+              FIDs.push(filtered2[i].FID);
+          }
+          //console.log(FIDs.length);
+
+          // match the selected FIDs with the geojson FID
+          var geo = angular.copy($scope.geojson);
+
+          var geoSub = $filter('filter')(geo.data.features, function(feature){
+              var geoFID = feature.properties.FID;
+              var match = null;
+              for(var j=0; j<FIDs.length; j++){
+                  if(geoFID === FIDs[j]){
+                      match = true;
+                      return match;
+                  }
+             return match;
+              }
+
+              });
+
+         console.log(geoSub);
+
+         $scope.geojson.data = {
+                  features: geoSub
+              };
+
       });
 
 });
