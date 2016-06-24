@@ -30,12 +30,42 @@ app.controller('MapCtrl', function() {
   this.events = null;
 });
 
+
+
 app.controller('SiteCtrl', function($http, $scope, $filter) {
+    var geojsonMarkerOptions = {
+    			    radius: 15,
+    			    fillColor: '#3232FF',
+    			    color: '#0000FF',
+    			    weight: 1,
+    			    opacity: 1,
+    			    fillOpacity: 0.8
+    			};
+
   //var self = this;
-  $http.get('geo.geojson').then(function(data) {
-    $scope.ProjectGeo = data;
-    $scope.geojson = data; // set inital values
+  $http.get('geo.geojson').success(function(data) {
+    angular.extend($scope, {
+      geojson: {
+        data: data,
+        pointToLayer: function(feature, latlng){
+                            return L.circleMarker(latlng, geojsonMarkerOptions);
+                        }
+        //console.log(layers);
+
+      },
+      ProjectGeo: {
+        data: data,
+        pointToLayer: function(feature, latlng){
+                            return L.circleMarker(latlng, geojsonMarkerOptions);
+                        }
+    }
+
+    });
   });
+
+
+
+  //build custom layers
 
 
   $http.get('projects.json').then(function(data2) {
@@ -47,7 +77,7 @@ app.controller('SiteCtrl', function($http, $scope, $filter) {
     $scope.search.variable = '';
     $scope.search.year = '';
     $scope.search.SelectedFeature = null;
-    this.selectedRow = null;
+    $scope.selectedRow = null;
   };
 
 
@@ -57,21 +87,38 @@ app.controller('SiteCtrl', function($http, $scope, $filter) {
   };
 
   // highlight selected row in table
-  this.selectedRow = null;
-  this.setClickedRow = function(index) {
-    this.selectedRow = index;
+  //$scope.selectedRow = null;
+  $scope.setClickedRow = function(index) {
+    $scope.selectedRow = index;
+    $scope.search.SelectedFeature = $scope.selectedRow.FID;
   };
 
 
-function projectClick(project) {
-            project = project.feature;
-            $scope.search.SelectedFeature = project.properties.FID;
-        }
+  function projectClick(project, eve) {
+    project = project.feature;
+    $scope.search.SelectedFeature = project.properties.FID;
+    console.log(eve);
+    var target = eve.target;
+    //console.log(eve.layer._icon);
+    var highlight = {
+    			    radius: 15,
+    			    fillColor: '#FFFF98',
+    			    color: '#FFFF7F',
+    			    weight: 5,
+    			    opacity: 1,
+    			    fillOpacity: 0.7
+    			};
 
-$scope.$on('leafletDirectiveGeoJson.myMap.click', function(ev, leafletPayload) {
-                   console.log(leafletPayload.leafletObject, leafletPayload.leafletEvent);
-                   projectClick(leafletPayload.leafletObject, leafletPayload.leafletEvent);
-               });
+
+    target.setStyle(highlight);
+
+  }
+
+
+  $scope.$on('leafletDirectiveGeoJson.myMap.click', function(ev, leafletPayload) {
+    console.log(leafletPayload.leafletObject, leafletPayload.leafletEvent);
+    projectClick(leafletPayload.leafletObject, leafletPayload.leafletEvent);
+  });
 
 
 
@@ -79,17 +126,15 @@ $scope.$on('leafletDirectiveGeoJson.myMap.click', function(ev, leafletPayload) {
   $scope.search = {
     query: '',
     variable: '',
-    year: ''
+    year: '',
+    SelectedFeature: null
   };
 
   // watch the search collection
   $scope.$watchCollection('search', function(newValue, oldValue) {
-    console.log(newValue);
+    console.log('Search Values ', newValue);
     if (newValue === oldValue) {
       return;
-    }
-    if (newValue.variable === '' && newValue.query === '' && newValue.year === '') {
-        console.log('NoData');
     }
 
 
@@ -107,7 +152,7 @@ $scope.$on('leafletDirectiveGeoJson.myMap.click', function(ev, leafletPayload) {
     for (var i = 0; i < filtered2.length; i++) {
       FIDs.push(filtered2[i].FID);
     }
-    console.log('Site Fids length', FIDs.length);
+    //console.log('Site Fids length', FIDs.length);
 
     // match the selected FIDs with the geojson FID
     var geo = angular.copy($scope.ProjectGeo);
@@ -127,11 +172,10 @@ $scope.$on('leafletDirectiveGeoJson.myMap.click', function(ev, leafletPayload) {
 
     });
 
-    console.log('Geo features', geoSub.length);
+
+    //console.log('Geo features', geoSub.length);
     geo.features = geoSub;
-    $scope.geojson = {
-      data: geo
-  };
+    $scope.geojson.data = geo;
   });
 
 });
