@@ -185,27 +185,23 @@ app.filter('customSearch', [function() {
     var output = []; // store result in this
     /**@case1 if both searches are present**/
     if (!!variable && !!year) {
-      variable = variable.toLowerCase();
-      year = year.toLowerCase();
       //loop over the original array
       for (var i = 0; i < data.length; i++) {
         // check if any result matching the search request
-        if (data[i].variable.toLowerCase().indexOf(variable) !== -1 && data[i].year.toLowerCase().indexOf(year) !== -1) {
+        if (data[i].variable.indexOf(variable) !== -1 && data[i].year.indexOf(year) !== -1) {
           //push data into results array
           output.push(data[i]);
         }
       }
     } else if (!!variable) { /**@case2 if only variable query is present**/
-      variable = variable.toLowerCase();
       for (var j = 0; j < data.length; j++) {
-        if (data[j].variable.toLowerCase().indexOf(variable) !== -1) {
+        if (data[j].variable.indexOf(variable) !== -1) {
           output.push(data[j]);
         }
       }
     } else if (!!year) { /**@case3 if only year query is present**/
-      year = year.toLowerCase();
       for (var k = 0; k < data.length; k++) {
-        if (data[k].year.toLowerCase().indexOf(year) !== -1) {
+        if (data[k].year.indexOf(year) !== -1) {
           output.push(data[k]);
         }
       }
