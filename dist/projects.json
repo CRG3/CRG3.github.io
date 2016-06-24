@@ -1,0 +1,26 @@
+[{
+    "FID": 1,
+    "name": "USGS Michigan Bar discharge",
+    "years": [1908, 2016],
+    "variable": "Discharge",
+    "details": "Daily discharge (m3/s) for the period of record (WY 1908-2016 to date) at the USGS Michigan Bar gage station on the Cosumnes River, CA"
+  },
+
+  {
+    "FID": 2,
+    "name": "Flood Water Quality Monitoring",
+    "years": [2015, 2016],
+    "variable": "Water Quality",
+    "details": "The focus of this study has been changes in water quality as water flows across the floodplain. We are monitoring water quality changes during river-floodplain connectivity (flooding), floodplain draining, and floodplain ponding phases of the flood"
+  },
+
+  {
+    "FID": 3,
+    "name": "Floodplain Topography",
+    "years": [2014, 2015],
+    "variable": "DEM",
+    "details": "1-m bare earth DEM combining RTK survey points at Sites U and L with CVFED LiDAR (2008) data elesewhere across the site"
+  }
+
+
+]
