@@ -1,0 +1,80 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "FID": 1,
+        "marker-color": "#3648c7",
+        "marker-size": "medium",
+        "marker-symbol": "circle",
+        "name": "USGS Michigan Bar discharge",
+        "years": [1908,2016],
+        "variable": "Discharge",
+        "details": "Daily discharge (m3/s) for the period of record (WY 1908-2016 to date) at the USGS Michigan Bar gage station on the Cosumnes River, CA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.04527115821838,
+          38.50035521924391
+        ]
+      }
+  },
+
+  {
+    "type": "Feature",
+    "properties": {
+      "FID": 2,
+      "name": "Flood Water Quality Monitoring",
+      "years": [2015, 2016],
+      "variable": "Water Quality",
+      "details": "The focus of this study has been changes in water quality as water flows across the floodplain. We are monitoring water quality changes during river-floodplain connectivity (flooding), floodplain draining, and floodplain ponding phases of the flood"
+    },
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [[-121.382632, 38.292567], [-121.375592, 38.31088], [-121.392615, 38.276456], [-121.398339, 38.269857]]
+    }
+},
+
+{
+     "type": "Feature",
+     "properties": {
+         "FID": 3,
+         "name": "Floodplain Topography",
+         "years": [2014, 2015],
+         "variable": "DEM",
+         "details": "1-m bare earth DEM combining RTK survey points at Sites U and L with CVFED LiDAR (2008) data elesewhere across the site"
+     },
+     "geometry": {
+       "type": "Polygon",
+       "coordinates": [
+         [
+           [
+             -121.3984,
+             38.2809
+           ],
+           [
+             -121.3984,
+             38.3226
+           ],
+           [
+             -121.3626,
+             38.3226
+           ],
+           [
+            -121.3626,
+             38.2809
+         ],
+         [
+           -121.3984,
+           38.2809
+         ]
+         ]
+       ]
+     }
+   }
+
+
+  ]
+}
