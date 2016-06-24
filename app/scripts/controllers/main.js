@@ -76,7 +76,7 @@ app.controller('SiteCtrl', function($http, $scope, $filter) {
     $scope.search.query = '';
     $scope.search.variable = '';
     $scope.search.year = '';
-    $scope.search.SelectedFeature = null;
+    $scope.search.SelectedFID = null;
     $scope.selectedRow = null;
   };
 
@@ -93,13 +93,9 @@ app.controller('SiteCtrl', function($http, $scope, $filter) {
     $scope.search.SelectedFeature = $scope.selectedRow.FID;
   };
 
-
-  function projectClick(project, eve) {
+  function projectHoverOn(project, eve) {
     project = project.feature;
-    $scope.search.SelectedFeature = project.properties.FID;
-    console.log(eve);
-    var target = eve.target;
-    //console.log(eve.layer._icon);
+    $scope.search.SelectedFID = project.properties.FID;
     var highlight = {
     			    radius: 15,
     			    fillColor: '#FFFF98',
@@ -109,15 +105,35 @@ app.controller('SiteCtrl', function($http, $scope, $filter) {
     			    fillOpacity: 0.7
     			};
 
+    eve.target.setStyle(highlight);
+  }
 
-    target.setStyle(highlight);
+  function projectHoverOut(project, eve) {
+    project = project.feature;
+    $scope.search.SelectedFID = null;
+    console.log(eve);
+    //var target = eve.target;
+    //console.log(eve.layer._icon);
+    var defaultSym = {
+            radius: 15,
+                        fillColor: '#3232FF',
+                        color: '#0000FF',
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
 
+    			};
+
+    eve.target.setStyle(defaultSym);
   }
 
 
-  $scope.$on('leafletDirectiveGeoJson.myMap.click', function(ev, leafletPayload) {
-    console.log(leafletPayload.leafletObject, leafletPayload.leafletEvent);
-    projectClick(leafletPayload.leafletObject, leafletPayload.leafletEvent);
+  $scope.$on('leafletDirectiveGeoJson.myMap.mouseover', function(ev, leafletPayload) {
+    projectHoverOn(leafletPayload.leafletObject, leafletPayload.leafletEvent);
+  });
+
+  $scope.$on('leafletDirectiveGeoJson.myMap.mouseout', function(ev, leafletPayload) {
+    projectHoverOut(leafletPayload.leafletObject, leafletPayload.leafletEvent);
   });
 
 
@@ -176,6 +192,7 @@ app.controller('SiteCtrl', function($http, $scope, $filter) {
     //console.log('Geo features', geoSub.length);
     geo.features = geoSub;
     $scope.geojson.data = geo;
+
   });
 
 });

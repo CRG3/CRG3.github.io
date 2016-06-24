@@ -32,7 +32,7 @@
         <leaflet id="myMap" center="map.center" geojson="geojson" events="events" width="100%" event-broadcast="events" height="100%"></leaflet>
       </div>
     </div>
-    {{layers.data}}
+
     <div style="padding: 20px"></div>
 
     <div>
@@ -43,7 +43,7 @@
               <th><a href="" ng-click="orderByField = 'year'; reverse=!reverse">Year</a></th>
               <th><a href="">More information</a></th>
             </tr>
-            <tr ng-repeat="project in projects | orderBy:orderByField:reverse | customSearch:search.variable:search.year | filter:search.query" ng-class="{'selected':project.FID == search.SelectedFeature}" ng-click="setClickedRow(project)">
+            <tr ng-repeat="project in projects | orderBy:orderByField:reverse | customSearch:search.variable:search.year | filter:search.query" ng-class="{'selected':project.FID == search.SelectedFID}" ng-click="setClickedRow(project)">
               <td>{{project.name}}</td>
               <td>{{project.variable}}</td>
               <td>{{project.year}}</td>

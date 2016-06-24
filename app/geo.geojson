@@ -22,20 +22,7 @@
       }
   },
 
-  {
-    "type": "Feature",
-    "properties": {
-      "FID": 2,
-      "name": "Flood Water Quality Monitoring",
-      "years": [2015, 2016],
-      "variable": "Water Quality",
-      "details": "The focus of this study has been changes in water quality as water flows across the floodplain. We are monitoring water quality changes during river-floodplain connectivity (flooding), floodplain draining, and floodplain ponding phases of the flood"
-    },
-    "geometry": {
-      "type": "MultiPoint",
-      "coordinates": [[-121.382632, 38.292567], [-121.375592, 38.31088], [-121.392615, 38.276456], [-121.398339, 38.269857]]
-    }
-},
+
 
 {
      "type": "Feature",
@@ -73,7 +60,20 @@
          ]
        ]
      }
+ }, {
+   "type": "Feature",
+   "properties": {
+     "FID": 2,
+     "name": "Flood Water Quality Monitoring",
+     "years": [2015, 2016],
+     "variable": "Water Quality",
+     "details": "The focus of this study has been changes in water quality as water flows across the floodplain. We are monitoring water quality changes during river-floodplain connectivity (flooding), floodplain draining, and floodplain ponding phases of the flood"
+   },
+   "geometry": {
+     "type": "MultiPoint",
+     "coordinates": [[-121.382632, 38.292567], [-121.375592, 38.31088], [-121.392615, 38.276456], [-121.398339, 38.269857]]
    }
+}
 
 
   ]
