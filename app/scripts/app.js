@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'leaflet-directive',
+    'ui.bootstrap',
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -29,6 +30,11 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .when('/details/:projectID', {
+        templateUrl: 'views/details.html',
+        controller: 'DetailsCtrl',
+        controllerAs: 'details'
       })
       .otherwise({
         redirectTo: '/'

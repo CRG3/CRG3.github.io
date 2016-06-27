@@ -1,5 +1,6 @@
 [{
     "FID": 1,
+    "id": "USGS-michigan-bar-discharge",
     "name": "USGS Michigan Bar discharge",
     "year": "2016",
     "variable": "Discharge",
@@ -8,6 +9,7 @@
 
   {
     "FID": 2,
+    "id": "Flood-water-quality-monitoring",
     "name": "Flood Water Quality Monitoring",
     "year": "2015",
     "variable": "Water Quality",
@@ -16,6 +18,7 @@
 
   {
     "FID": 3,
+    "id": "Floodplain-DEM",
     "name": "Floodplain Topography",
     "year": "2015",
     "variable": "DEM",

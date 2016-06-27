@@ -1,0 +1,51 @@
+<div ng-controller="DetailsCtrl as details">
+<h3>{{details.project.name}}</h3>
+
+<ul class="nav nav-tabs">
+    <li ng-class="{active:details.activetab === 'metadata'}"><a ng-click='details.activetab = "metadata"'>Metadata</a></li>
+    <li ng-class="{active:details.activetab === 'data'}"><a ng-click='details.activetab = "data"'>Data</a></li>
+    <li ng-class="{active:details.activetab === 'map'}"><a ng-click='details.activetab = "map"'>Map</a></li>
+    <li ng-class="{active:details.activetab === 'download'}"><a ng-click='details.activetab = "download"'>Download</a></li>
+</ul>
+
+<div class="tab-content" style="padding:10px">
+    <div ng-switch="details.activetab">
+
+        <div ng-switch-when='metadata'>
+            <p><b>About:</b> {{details.project.details}}</p>
+
+            <p><b>Contact:</b> {{details.project.contact}}</p>
+
+            <p><b>Dates:</b> {{details.project.dates}}</p>
+
+            <p><b>Variables:</b> {{details.project.variables}}</p>
+
+
+        </div>
+
+        <div ng-switch-when='data'> or this</div>
+
+        <div ng-switch-when='map'>
+            <div style="height:300px;">
+              <leaflet id="map" geojson="geojson" height="100%"></leaflet>
+              {{bounds}}
+            </div>
+        </div>
+
+        <div ng-switch-when='download'>
+            <ul>
+              <li ng-repeat="download in details.project.downloads">
+                  <a href={{download.url}} download>
+                  <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> {{download.name}}
+                  </a>
+              </li>
+            </ul>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+</div>
