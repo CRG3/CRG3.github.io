@@ -65,6 +65,12 @@ angular.module('ngApp')
       leafletData.getMap('map').then(function(map) {
           var latlngs = [];
           for (var i in $scope.geojson.data.features[0].geometry.coordinates) {
+              console.log($scope.geojson.data.features[0].geometry.coordinates.length);
+              if ($scope.geojson.data.features[0].geometry.coordinates.length === 2){
+                  console.log('only one');
+                  latlngs.push(L.GeoJSON.coordsToLatLng($scope.geojson.data.features[0].geometry.coordinates));
+              }
+              else{
               var coord = $scope.geojson.data.features[0].geometry.coordinates[i];
               console.log(coord);
               for (var j in coord) {
@@ -73,6 +79,7 @@ angular.module('ngApp')
                   latlngs.push(L.GeoJSON.coordsToLatLng(points));
 
               }
+          }
           }
           console.log(latlngs);
           map.fitBounds(latlngs);
