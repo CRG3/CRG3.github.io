@@ -135,7 +135,7 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
 
     // bindup message
     $scope.popupMessage = function(clickedFeatureID, clickedFeatureName){
-       var link = '<a href="#!/details/' + clickedFeatureID + '">' + clickedFeatureName + '</a>';
+       var link = '<a href="#/details/' + clickedFeatureID + '">' + clickedFeatureName + '</a>';
        return link;
     }
 

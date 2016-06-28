@@ -19,8 +19,7 @@ angular
     'ui.bootstrap',
     'ui-leaflet'
   ])
-  .config(function ($locationProvider, $routeProvider) {
-    $locationProvider.hashPrefix('!');
+  .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
