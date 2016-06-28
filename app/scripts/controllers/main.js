@@ -32,7 +32,7 @@ app.controller('MapCtrl', function() {
 
 
 
-app.controller('SiteCtrl', function($http, $scope, $filter) {
+app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
     var geojsonMarkerOptions = {
     			    radius: 15,
     			    fillColor: '#3232FF',
@@ -61,6 +61,8 @@ app.controller('SiteCtrl', function($http, $scope, $filter) {
     }
 
     });
+    //center json
+    $scope.centerJSON();
   });
 
 
@@ -193,10 +195,42 @@ app.controller('SiteCtrl', function($http, $scope, $filter) {
     geo.features = geoSub;
     $scope.geojson.data = geo;
 
+    //center json
+    $scope.centerJSON();
+
   });
 
-});
 
+  //center map to geojson extent
+  $scope.centerJSON = function() {
+  leafletData.getMap('map').then(function(map) {
+    var latlngs = [];
+    // loop through all the features in the geojson file
+    for (var f = 0; f < $scope.geojson.data.features.length; f++) {
+      var feature = $scope.geojson.data.features[f];
+      if (feature.geometry.type === 'Point') {
+        var coord = feature.geometry.coordinates;
+        latlngs.push(L.GeoJSON.coordsToLatLng(coord));
+      } else if (feature.geometry.type === 'MultiPoint') {
+        for (var i = 0; i < feature.geometry.coordinates.length; i++) {
+          var coord = feature.geometry.coordinates[i];
+          latlngs.push(L.GeoJSON.coordsToLatLng(coord));
+        }
+      } else if (feature.geometry.type === 'Polygon') {
+        var coordArray = feature.geometry.coordinates[0];
+        for (var j in coordArray) {
+          var coord = coordArray[j];
+          latlngs.push(L.GeoJSON.coordsToLatLng(coord));
+        }
+      } else {
+        console.log('Unknown feature geometry type. Try using points, multipoints, or polygons')
+      }
+    }
+    map.fitBounds(latlngs);
+  });
+  };
+
+  });
 
 app.filter('unique', ['$parse', function($parse) {
 

@@ -4,7 +4,7 @@
 <ul class="nav nav-tabs">
     <li ng-class="{active:details.activetab === 'metadata'}"><a ng-click='details.activetab = "metadata"'>Metadata</a></li>
     <li ng-class="{active:details.activetab === 'data'}"><a ng-click='details.activetab = "data"'>Data</a></li>
-    <li ng-class="{active:details.activetab === 'map'}"><a ng-click='details.activetab = "map"'>Map</a></li>
+    <li ng-class="{active:details.activetab === 'location'}"><a ng-click='details.activetab = "location"'>Map</a></li>
     <li ng-class="{active:details.activetab === 'download'}"><a ng-click='details.activetab = "download"'>Download</a></li>
 </ul>
 
@@ -25,11 +25,10 @@
 
         <div ng-switch-when='data'> or this</div>
 
-        <div ng-switch-when='map'>
+        <div ng-switch-when='location'>
             <div style="height:300px;">
-              <leaflet id="map" geojson="geojson" height="100%"></leaflet>
-              {{bounds}}
-              <input type="button" value="Click to center" ng-click="centerJSON()" />
+              <leaflet id="MyMap" geojson="geojson" height="100%" ng-init="centerJSON()"></leaflet>
+              <input type="button" value="Click to Center" ng-click="centerJSON()" />
             </div>
         </div>
 
