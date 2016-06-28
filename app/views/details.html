@@ -3,7 +3,6 @@
 
 <ul class="nav nav-tabs">
     <li ng-class="{active:details.activetab === 'metadata'}"><a ng-click='details.activetab = "metadata"'>Metadata</a></li>
-    <li ng-class="{active:details.activetab === 'data'}"><a ng-click='details.activetab = "data"'>Data</a></li>
     <li ng-class="{active:details.activetab === 'location'}"><a ng-click='details.activetab = "location"'>Map</a></li>
     <li ng-class="{active:details.activetab === 'download'}"><a ng-click='details.activetab = "download"'>Download</a></li>
 </ul>
@@ -18,7 +17,13 @@
 
             <p><b>Dates:</b> {{details.project.dates}}</p>
 
-            <p><b>Variables:</b> {{details.project.variables}}</p>
+            <p><b>Variables:</b>
+                <li ng-repeat="variable in details.project.variables">
+                    {{variable}}
+                </li>
+
+
+            </p>
 
 
         </div>

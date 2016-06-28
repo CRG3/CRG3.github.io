@@ -3,7 +3,7 @@
   "id": "Floodplain-DEM",
   "name": "Floodplain Topography",
   "dates": "2015",
-  "variables": "DEM",
+  "variables": ["DEM"],
   "details": "1-m bare earth DEM combining RTK survey points at Sites U and L with CVFED LiDAR (2008) data elesewhere across the site",
   "downloads": [{
       "name": "SiteL_be_1m_2015.tif", "url": "https://github.com/CRG3/data/raw/master/topography/SiteL_be_1m_2015.tif"}, {

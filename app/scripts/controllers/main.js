@@ -49,7 +49,11 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
         data: data,
         pointToLayer: function(feature, latlng){
                             return L.circleMarker(latlng, geojsonMarkerOptions);
-                        }
+                        },
+        onEachFeature: function (feature, layer) {
+                            $scope.clickedFID = feature.properties.id;
+                           layer.bindPopup($scope.popupMessage(feature.properties.id, feature.properties.name));
+                       }
         //console.log(layers);
 
       },
@@ -66,6 +70,13 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
   });
 
 
+  // bindup message
+  $scope.popupMessage = function(clickedFeatureID, clickedFeatureName){
+     var link = '<a href="#/details/' + clickedFeatureID + '">' + clickedFeatureName + '</a>';
+     return link;
+  }
+
+
 
   //build custom layers
 
@@ -78,15 +89,10 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
     $scope.search.query = '';
     $scope.search.variable = '';
     $scope.search.year = '';
-    $scope.search.SelectedFID = null;
+    $scope.SelectedFID = null;
     $scope.selectedRow = null;
   };
 
-
-
-  this.tableClick = function(dat) {
-    this.query = dat.name;
-  };
 
   // highlight selected row in table
   //$scope.selectedRow = null;
@@ -97,7 +103,7 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
 
   function projectHoverOn(project, eve) {
     project = project.feature;
-    $scope.search.SelectedFID = project.properties.FID;
+    $scope.SelectedFID = project.properties.FID;
     var highlight = {
     			    radius: 15,
     			    fillColor: '#FFFF98',
@@ -112,7 +118,7 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
 
   function projectHoverOut(project, eve) {
     project = project.feature;
-    $scope.search.SelectedFID = null;
+    $scope.SelectedFID = null;
     console.log(eve);
     //var target = eve.target;
     //console.log(eve.layer._icon);
@@ -130,12 +136,23 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
   }
 
 
-  $scope.$on('leafletDirectiveGeoJson.myMap.mouseover', function(ev, leafletPayload) {
+  $scope.$on('leafletDirectiveGeoJson.map.mouseover', function(ev, leafletPayload) {
     projectHoverOn(leafletPayload.leafletObject, leafletPayload.leafletEvent);
   });
 
-  $scope.$on('leafletDirectiveGeoJson.myMap.mouseout', function(ev, leafletPayload) {
+  $scope.$on('leafletDirectiveGeoJson.map.mouseout', function(ev, leafletPayload) {
     projectHoverOut(leafletPayload.leafletObject, leafletPayload.leafletEvent);
+  });
+
+
+  function ClickOn(project, eve) {
+    project = project.feature;
+    $scope.clickedFID = project.properties.FID;
+    console.log($scope.clickedFID);
+  }
+  $scope.$on('leafletDirectiveGeoJson.map.click', function(ev, leafletPayload) {
+     console.log('click');
+     ClickOn(leafletPayload.leafletObject, leafletPayload.leafletEvent)
   });
 
 
@@ -145,7 +162,6 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
     query: '',
     variable: '',
     year: '',
-    SelectedFeature: null
   };
 
   // watch the search collection
