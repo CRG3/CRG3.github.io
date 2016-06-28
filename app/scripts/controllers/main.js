@@ -49,12 +49,7 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
         data: data,
         pointToLayer: function(feature, latlng){
                             return L.circleMarker(latlng, geojsonMarkerOptions);
-                        },
-        onEachFeature: function (feature, layer) {
-                            $scope.clickedFID = feature.properties.id;
-                           layer.bindPopup($scope.popupMessage(feature.properties.id, feature.properties.name));
-                       }
-        //console.log(layers);
+                        }
 
       },
       ProjectGeo: {
@@ -68,14 +63,6 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
     //center json
     $scope.centerJSON();
   });
-
-
-  // bindup message
-  $scope.popupMessage = function(clickedFeatureID, clickedFeatureName){
-     var link = '<a href="#/details/' + clickedFeatureID + '">' + clickedFeatureName + '</a>';
-     return link;
-  }
-
 
 
   //build custom layers
@@ -145,10 +132,23 @@ app.controller('SiteCtrl', function($http, $scope, $filter, leafletData) {
   });
 
 
+
+    // bindup message
+    $scope.popupMessage = function(clickedFeatureID, clickedFeatureName){
+       var link = '<a href="#!/details/' + clickedFeatureID + '">' + clickedFeatureName + '</a>';
+       return link;
+    }
+
   function ClickOn(project, eve) {
-    project = project.feature;
-    $scope.clickedFID = project.properties.FID;
-    console.log($scope.clickedFID);
+    console.log(project);
+    eve.target.bindPopup($scope.popupMessage(project.feature.properties.id, project.feature.properties.name));
+    eve.target.openPopup();
+
+    /*onEachFeature: function (feature, layer) {
+                        $scope.clickedFID = feature.properties.id;
+                       layer.bindPopup($scope.popupMessage(feature.properties.id, feature.properties.name));
+                   }
+                   */
   }
   $scope.$on('leafletDirectiveGeoJson.map.click', function(ev, leafletPayload) {
      console.log('click');
