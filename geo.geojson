@@ -5,9 +5,7 @@
       "type": "Feature",
       "properties": {
         "FID": 1,
-        "marker-color": "#3648c7",
-        "marker-size": "medium",
-        "marker-symbol": "circle",
+        "id": "USGS-michigan-bar-discharge",
         "name": "USGS Michigan Bar discharge",
         "years": [1908,2016],
         "variable": "Discharge",
@@ -28,6 +26,7 @@
      "type": "Feature",
      "properties": {
          "FID": 3,
+         "id": "USGS-michigan-bar-discharge",
          "name": "Floodplain Topography",
          "years": [2014, 2015],
          "variable": "DEM",
@@ -64,6 +63,7 @@
    "type": "Feature",
    "properties": {
      "FID": 2,
+     "id": "Flood-water-quality-monitoring",
      "name": "Flood Water Quality Monitoring",
      "years": [2015, 2016],
      "variable": "Water Quality",
