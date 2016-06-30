@@ -6,7 +6,7 @@
   "variables": ["DEM"],
   "details": "1-m bare earth DEM combining RTK survey points at Sites U and L with CVFED LiDAR (2008) data elesewhere across the site",
   "downloads": [{
-      "name": "SiteL_be_1m_2015.tif", "url": "https://github.com/CRG3/data/raw/master/topography/SiteL_be_1m_2015.tif"}, {
-          "name": "SiteU_be_1m_2015.tif", "url": "https://github.com/CRG3/data/raw/master/topography/SiteU_be_1m_2015.tif"}, {
-              "name": "od_be_1m_2014.tif", "url": "https://github.com/CRG3/data/raw/master/topography/od_be_1m_2014.tif"}]
+      "name": "SiteL_be_1m_2015.tif", "url": "/data/topography/SiteL_be_1m_2015.tif"}, {
+          "name": "SiteU_be_1m_2015.tif", "url": "/data/topography/SiteU_be_1m_2015.tif"}, {
+              "name": "od_be_1m_2014.tif", "url": "/data/topography/od_be_1m_2014.tif"}]
 }

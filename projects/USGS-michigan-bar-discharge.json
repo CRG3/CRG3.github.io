@@ -4,10 +4,10 @@
     "contact": "AW",
     "details": "Daily discharge (m3/s) for the period of record (WY 1908-2016 to date) at the USGS Michigan Bar gage station on the Cosumnes River, CA",
     "downloads": [{
-        "name": "USGS1133500", "url": "https://raw.githubusercontent.com/CRG3/data/master/flow/USGS11335000_Discharge_WY1908-2016_todate.csv"}],
+        "name": "USGS1133500", "url": "/data/flow/USGS11335000_Discharge_WY1908-2016_todate.csv"}],
     "variables": ["Discharge"],
-    "markers": {"marker1": {
-        "lat":38.50035521924391,
-        "lng":-121.04527115821838,
-        "message": "USGS Michigan Bar"}}
+    "table": {
+        "url": "data/flow/USGS11335000_Discharge_WY1908-2016_todate.json",
+        "columns": ["Month", "Day", "Year", "Q_cms"]
+        }
 }

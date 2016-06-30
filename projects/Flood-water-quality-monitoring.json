@@ -4,6 +4,10 @@
     "contact": "Devon",
     "details": "The focus of this study has been changes in water quality as water flows across the floodplain. We are monitoring water quality changes during river-floodplain connectivity (flooding), floodplain draining, and floodplain ponding phases of the flood",
     "downloads": [{
-        "name": "Water Quality 2016", "url": "https://github.com/CRG3/data/raw/master/waterquality/WQ_2016.csv"}],
-    "variables": ["pH/ EC", "Turbidity/Total Suspended Solid", "Volatile Suspended Solid", "Ammonium concentration", "Nitrate concentration", "Total Nitrogen", "Phosphate Concentration", "Total Phosphorus"]
+        "name": "Water Quality 2016", "url": "/data/waterquality/WQ_2016.csv"}],
+    "variables": ["pH/ EC", "Turbidity/Total Suspended Solid", "Volatile Suspended Solid", "Ammonium concentration", "Nitrate concentration", "Total Nitrogen", "Phosphate Concentration", "Total Phosphorus"],
+    "table": {
+        "url": "/data/waterquality/WQ_2016.csv",
+        "columns": ["Date", "Time", "ID", "SITE", "EC", "pH", "Turbidity", "NH4", "NO3","TN", "PO4", "TP", "TSS", "VSS", "ChlorophyllA", "PheophytinA"]
+        }
 }
