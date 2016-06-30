@@ -7,7 +7,7 @@
         "name": "Water Quality 2016", "url": "/data/waterquality/WQ_2016.csv"}],
     "variables": ["pH/ EC", "Turbidity/Total Suspended Solid", "Volatile Suspended Solid", "Ammonium concentration", "Nitrate concentration", "Total Nitrogen", "Phosphate Concentration", "Total Phosphorus"],
     "table": {
-        "url": "/data/waterquality/WQ_2016.csv",
+        "url": "/data/waterquality/WQ_2016.json",
         "columns": ["Date", "Time", "ID", "SITE", "EC", "pH", "Turbidity", "NH4", "NO3","TN", "PO4", "TP", "TSS", "VSS", "ChlorophyllA", "PheophytinA"]
         }
 }
