@@ -1,0 +1,20 @@
+{
+    "name": "Channel Longitudinal Profile",
+    "contact": "Drew Nichols",
+    "dates": "2013 & 2015",
+    "details": "Channel longitudinal profile. All topographic data collected in WGS84 datum, UTM Zone 10N projection. RiverMeter and RiverKM refer to upstream distances along channel centerline from the confluence between the Mokelumne and Cosumnes Rivers.",
+    "downloads": [{
+        "name": "LP_BSE_2013_2015.csv", "url": "/data/channel-longitudinal-profile/LP_BSE_2013_2015.csv"}],
+    "variables": ["Elevation", "Longitudinal", "Profile", "Topography"],
+
+    "tabs": {
+            "table": true,
+            "map": true,
+            "download": true,
+            "customMap": false
+        },
+        "table": {
+                "url": "/data/channel-longitudinal-profile/LP_BSE_2013_2015.json",
+                "columns": ["RiverMeter", "RiverKM", "Elevation", "Easting", "Northing", "Year"]
+            }
+}

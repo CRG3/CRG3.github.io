@@ -8,5 +8,12 @@
   "downloads": [{
       "name": "SiteL_be_1m_2015.tif", "url": "/data/topography/SiteL_be_1m_2015.tif"}, {
           "name": "SiteU_be_1m_2015.tif", "url": "/data/topography/SiteU_be_1m_2015.tif"}, {
-              "name": "od_be_1m_2014.tif", "url": "/data/topography/od_be_1m_2014.tif"}]
+              "name": "od_be_1m_2014.tif", "url": "/data/topography/od_be_1m_2014.tif"}],
+"tabs": {
+                  "table": false,
+                  "map": true,
+                  "download": true,
+                  "customMap": true
+              },
+"iframe": "http://ucd-cws.github.io/fish-maps/"
 }

@@ -9,5 +9,11 @@
     "table": {
         "url": "/data/waterquality/WQ_2016.json",
         "columns": ["Date", "Time", "ID", "SITE", "EC", "pH", "Turbidity", "NH4", "NO3","TN", "PO4", "TP", "TSS", "VSS", "ChlorophyllA", "PheophytinA"]
-        }
+    },
+    "tabs": {
+            "table": true,
+            "map": true,
+            "download": true,
+            "customMap": false
+                  }
 }

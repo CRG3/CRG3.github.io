@@ -9,5 +9,11 @@
     "table": {
         "url": "data/flow/USGS11335000_Discharge_WY1908-2016_todate.json",
         "columns": ["Month", "Day", "Year", "Q_cms"]
-        }
+    },
+    "tabs": {
+        "table": true,
+        "map": true,
+        "download": true,
+        "customMap": false
+    }
 }

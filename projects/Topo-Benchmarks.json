@@ -1,0 +1,15 @@
+{
+    "name": "Topographic Benchmarks",
+    "contact": "Drew Nichols",
+    "details": "Topographic benchmarks for the Cosumnes Project. All topographic data collected in WGS84 datum, UTM Zone10N projection",
+    "downloads": [{
+        "name": "Cosumnes_Benchmarks.csv", "url": "/data/topographic-benchmarks/Cosumnes_Benchmarks.csv"}],
+    "variables": ["Elevation"],
+
+    "tabs": {
+            "table": false,
+            "map": true,
+            "download": true,
+            "customMap": false
+        }
+}
