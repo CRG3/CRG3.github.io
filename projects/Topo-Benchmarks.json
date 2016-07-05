@@ -10,6 +10,7 @@
             "table": false,
             "map": true,
             "download": true,
-            "customMap": false
-        }
+            "customMap": true
+        },
+"iframe": "https://ucd-cws.github.io/fish-maps/"
 }
