@@ -16,5 +16,10 @@
         "table": {
                 "url": "/data/channel-cross-sections/CrossSections_2014_2015.json",
                 "columns": ["Point_ID", "Easting", "Northing", "Elevation", "Code", "source"]
-            }
+            },
+
+    "map": {
+    "geojsonURL": "data/channel-cross-sections/Cross_Section_Locations.geojson",
+    "popup": ["Elevation", "Code"]
+    }
 }

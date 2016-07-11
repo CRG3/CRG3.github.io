@@ -10,7 +10,11 @@
             "table": false,
             "map": true,
             "download": true,
-            "customMap": true
+            "customMap": false
         },
-"iframe": "https://ucd-cws.github.io/fish-maps/"
+
+"map": {
+    "geojsonURL": "data/topographic-benchmarks/benchmarks.geojson",
+    "popup": ["Elev_m", "Code"]
+    }
 }

@@ -1,5 +1,5 @@
 {
-    "name": "Floodplain & River water surface elevations",
+    "name": "Floodplain & River Water Surface Elevations",
     "dates": "2012 - 2016",
     "contact": "Drew Nichols",
     "details": "Logger data showing elevations of water surfaces for river, breach, and floodplain locations. Loggers collected data at a regular 15 minute intervals. Temperature was also collected at some locations. See metadata spreadsheet for locations and time period of the various monitoring locations.",
@@ -21,5 +21,11 @@
     "table": {
             "url": "/data/floodplain-river-levels/floodplain-river-levels-logger-metadata.json",
             "columns": ["Location", "Type", "Elevation", "2012", "2013", "2014", "2015", "2016"]
+        },
+    "map": {
+        "geojsonURL": "data/floodplain-river-levels/floodplain-river-levels-logger-locations.geojson",
+        "popup": ["Location", "Type", "WaterYear"]
         }
+
+
 }

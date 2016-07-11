@@ -16,5 +16,10 @@
         "table": {
                 "url": "/data/channel-longitudinal-profile/LP_BSE_2013_2015.json",
                 "columns": ["RiverMeter", "RiverKM", "Elevation", "Easting", "Northing", "Year"]
-            }
+            },
+
+            "map": {
+                "geojsonURL": "data/channel-longitudinal-profile/longitudinal.geojson",
+                "popup": ["RiverMeter", "RiverKM", "Elevation", "Year"]
+                }
 }

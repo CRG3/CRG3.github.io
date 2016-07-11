@@ -15,5 +15,9 @@
                   "download": true,
                   "customMap": true
               },
-"iframe": "https://ucd-cws.github.io/fish-maps/"
+    "map": {
+              "geojsonURL": "data/topography/Floodplain-dem-footprint.geojson",
+              "popup": ["name"]
+          },
+          "iframe": "https://crg3.github.io/floodplain-topo-viewer/"
 }

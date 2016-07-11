@@ -15,5 +15,10 @@
         "map": true,
         "download": true,
         "customMap": false
+    },
+
+    "map": {
+    "geojsonURL": "data/flow/USGS-michigan-bar-discharge.geojson",
+    "popup": ["name"]
     }
 }

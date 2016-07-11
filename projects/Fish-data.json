@@ -1,0 +1,20 @@
+{
+    "name": "Fish Monitoring",
+    "contact": "Carson Jeffres",
+    "dates": "2012 - 2016",
+    "details": "Fish monitoring data. Data includes information about the species caught, native status, length (mm), trap location and tag number.",
+    "downloads": [{
+        "name": "fish_data_2012_2016.csv", "url": "/data/fish/fish_data_2012_2016.csv"}],
+    "variables": ["Species", "Date", "Location", "Native", "Length", "Tag Number"],
+
+    "tabs": {
+            "table": false,
+            "map": false,
+            "download": true,
+            "customMap": false
+        },
+        "table": {
+                "url": "/data/fish/fish_data_2012_2016.csv.json",
+                "columns": ["Sample", "Native_Non-native", "Species", "DateSet", "TrapLocation", "TagNumber"]
+            }
+}

@@ -1,0 +1,99 @@
+[{      "FID": 1,
+        "id": "USGS-michigan-bar-discharge",
+        "name": "USGS Michigan Bar Discharge",
+        "years": [1908,2016],
+        "variable": "Flow",
+        "details": "Daily discharge (m3/s) for the period of record (WY 1908-2016 to date) at the USGS Michigan Bar gage station on the Cosumnes River, CA"
+      },
+
+{
+
+         "FID": 3,
+         "id": "Floodplain-DEM",
+         "name": "Floodplain Topography",
+         "years": [2014, 2015],
+         "variable": "Topo",
+         "details": "1-m bare earth DEM combining RTK survey points at Sites U and L with CVFED LiDAR (2008) data elesewhere across the site"
+ },
+ {
+     "FID": 2,
+     "id": "Flood-water-quality-monitoring",
+     "name": "Flood Water Quality Monitoring",
+     "years": [2015, 2016],
+     "variable": "Water Quality",
+     "details": "The focus of this study has been changes in water quality as water flows across the floodplain. We are monitoring water quality changes during river-floodplain connectivity (flooding), floodplain draining, and floodplain ponding phases of the flood."
+},
+
+{
+    "FID": 3,
+    "id": "Floodplain-river-levels",
+    "name": "Floodplain and River Level Logger Data",
+    "years": [2012, 2016],
+    "variable": "Logger",
+    "details": "Raw logger data showing floodplain and river water surface elevations."
+},
+
+{
+    "FID": 4,
+    "id": "Topo-Benchmarks",
+    "name": "Topographic Benchmarks",
+    "years": [2012, 2016],
+    "variable": "Topo",
+    "details": "Topographic benchmarks for the Consumnes project. All topographic data collected in WGS84 datum, UTM Zone10N projection."
+},
+
+
+{
+    "FID": 5,
+    "id": "Channel-XS",
+    "name": "Channel Cross Sections",
+    "years": [2014, 2015],
+    "variable": "Topo",
+    "details": "Channel Cross Sections. "
+},
+
+{
+    "FID": 6,
+    "id": "Channel-LONG",
+    "name": "Channel Longitudinal Profile",
+    "years": [2013, 2015],
+    "variable": "Topo",
+    "details": "Profile with river distances along channel centerline"
+},
+
+{
+    "FID": 7,
+    "id": "Soil-Analysis",
+    "name": "Soil Core Analysis",
+    "years": [],
+    "variable": "Soil",
+    "details": "Soil cores analyzed for total carbon (TC) and nitrogen (TN) as well as isotopic abundance, ammonia-nitrogen, nitrate, and DNA."
+},
+
+{
+    "FID": 8,
+    "id": "Fish-data",
+    "name": "Fish Monitoring",
+    "years": [2012, 2013, 2014, 2015, 2016],
+    "variable": "Biological",
+    "details": "Monitoring data for 2012 - 2016"
+},
+
+{
+    "FID": 9,
+    "id": "Groundwater-monitoring",
+    "name": "Groundwater Monitoring",
+    "years": [2012, 2013],
+    "variable": "Water Quality",
+    "details": "Data collected from 2/2014 through 11/2015 from all monitoring wells and the Cosumnes River at the low water crossing.  Some data collection (DO, T, EC, and pH) began in Winter 2015. Only subsection of samples (quarterly) were analyzed for major cations and anions. Only samples with greater than 0.02 umol NO3 were sent for 15N and 18O isotopic signatures."
+},
+{
+    "FID": 10,
+    "id": "Soil-Deep-Carbon",
+    "name": "Surface and Subsurface Soil Data",
+    "years": [],
+    "variable": "Soil",
+    "details": "Data from the subsurface and surface soil samples. Samples were collected and analyzed for C, N, 13C and 15N."
+}
+
+]

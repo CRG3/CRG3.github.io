@@ -1,0 +1,24 @@
+{
+    "name": "Groundwater Monitoring",
+    "dates": "2014 - 2015",
+    "contact": "Nick Newcomb & Amanda D'Elia",
+    "details": "Data about all monitoring wells including total depth, screen depths and depth at which grout begins. Log ata from well installation including well spatial information, sediment sample information and in field texture analysis data. Data collected from 2/2014 through 11/2015 from all monitoring wells and the Cosumnes River at the low water crossing.  Some data collection (DO, T, EC, and pH) began in Winter 2015. Only subsection of samples (quarterly) were analyzed for major cations and anions. Only samples with greater than 0.02 umol NO3 were sent for 15N and 18O isotopic signatures.",
+    "downloads": [{
+        "name": "CRG Groundwater Quality Master.xlsx", "url": "/data/groundwater-monitoring/CRG Groundwater Quality Master.xlsx"}],
+    "variables": ["Sediment Type", "Nitrate", "Ammonium", "15N Isotopic",  "18O Isotopic", "Dissolved Oxygen", "Temperature", "Electrical Conductivity", "pH concentration", "Cl concentration", "SO4 concentration", "Br concentration", "Na concentration", "K concentration", "Mg concentration", "Ca concentration", "HCO3 concentration"],
+    "table": {
+        "url": "/data/groundwater-monitoring/Monitoring_Well_Depths.json",
+        "columns": ["WellNumber", "TotalDepth", "ScreenBot", "ScreenTop", "SandTop", "GroutType", "GroutDate", "SWL"]
+    },
+    "tabs": {
+            "table": true,
+            "map": true,
+            "download": true,
+            "customMap": false
+        },
+
+    "map": {
+                 "geojsonURL": "data/groundwater-monitoring/Monitoring_Well_Locations.geojson",
+                  "popup": ["WellNumber", "TotalDepth", "ScreenBot", "ScreenTop", "SandTop", "GroutType", "SWL"]
+                  }
+}

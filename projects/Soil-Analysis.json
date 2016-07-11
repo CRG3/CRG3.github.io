@@ -1,0 +1,62 @@
+{
+  "name": "Soil Core Analysis",
+  "contact": "Kristin Steger",
+  "dates": "",
+  "details": "Transect of 31 soil cores (A1-D8). The cores were cut in 1 foot increments and analyzed. The soil samples were measured for total carbon (TC) and nitrogen (TN) as well as isotopic abundance d13C and d15N, respectively. Furthermore, ammonia-nitrogen (NH4) and nitrate (NO3) content in the soils were measured. With all these parameters we want to test the spatial variability, especially for the buried horizon, the subsoil layer of higher carbon concentrations. Moreover, with radiocarbon 14C dating we wanted to get an idea of the carbon age and correlate it to the buried horizon. All samples extracted for DNA and further sequencing are shown.",
+  "downloads": [{
+      "name": "14C_Dating.csv",
+      "url": "/data/soil-analysis/14C_Dating.csv"
+    }, {
+      "name": "d13C.csv",
+      "url": "/data/soil-analysis/d13C.csv"
+    }, {
+      "name": "d15N.csv",
+      "url": "/data/soil-analysis/d15N.csv"
+    }, {
+      "name": "DNA.csv",
+      "url": "/data/soil-analysis/DNA.csv"
+    }, {
+      "name": "NH4.csv",
+      "url": "/data/soil-analysis/NH4.csv"
+    }, {
+      "name": "d13C.csv",
+      "url": "/data/soil-analysis/NO3.csv"
+    }, {
+      "name": "TC.csv",
+      "url": "/data/soil-analysis/TC.csv"
+    }, {
+      "name": "TN.csv",
+      "url": "/data/soil-analysis/TN.csv"
+    }, {
+      "name": "Soil_Sampling_Locations.geojson",
+      "url": "/data/soil-analysis/Soil_Sampling_Locations.geojson"
+    }, {
+      "name": "SOIL_AVG.csv",
+      "url": "/data/soil-analysis/SOIL_AVG.csv"
+    }, {
+      "name": "All data",
+      "url": "/data/soil-analysis/original/CN data_CRG.xlsx"
+    }
+
+  ],
+
+
+  "variables": ["Total Carbon", "Total Nitrogen", "Istopic Abundance d13C", "Istopic Abundance d15N", "Ammonia-nitrogen", "Nitrate", "DNA"],
+
+  "tabs": {
+    "table": true,
+    "map": true,
+    "download": true,
+    "customMap": false
+  },
+  "table": {
+    "url": "/data/soil-analysis/SOIL_AVG.json",
+    "columns": ["Soil_depth_cm", "d13C", "C_percent", "d15N", "N_percent", "NO3", "NH4"]
+
+  },
+
+  "map": {
+    "geojsonURL": "/data/soil-analysis/Soil_Sampling_Locations.geojson",
+    "popup": ["Sampling_site", "Elevation"]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Surface and Subsurface Soil Data",
+  "dates": "2013",
+  "contact": "Garrett Liles & Amanda D'Elia",
+  "details": "Data from the subsurface and surface soil samples. Samples were collected and analyzed for C, N, 13C and 15N.",
+  "downloads": [{
+    "name": "CRG 2013 Soil Master Sheet.xlsx",
+    "url": "/data/Soil-Deep-Carbon/CRG 2013 Soil Master Sheet.xlsx"
+  }],
+  "variables": [
+    "% Sand", "% Clay", "% Silt", "Texture", "pH", "% Organic Matter", "Bulk Density", "% Carbon", "d13C Isotopic signature", "% Nitrogen", "C:N Ratio"
+  ],
+  "tabs": {
+    "table": false,
+    "map": true,
+    "download": true,
+    "customMap": false
+  },
+
+  "map": {
+    "geojsonURL": "data/soil-deep-carbon/Soil_DC.geojson",
+    "popup": ["ID", "Type","Category"]
+  }
+}
